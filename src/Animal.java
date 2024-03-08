@@ -98,12 +98,28 @@ public abstract class Animal
         return field;
     }
 
+    /**
+     * An abstract method to allow the call of the getMaxAge() method from any subclasses
+     * @return The max age of the animal
+     */
     public abstract int getMaxAge();
 
+    /**
+     * An abstract method to allow the call of the getBreedingProbability() method from any subclasses
+     * @return The breeding probability of the animal
+     */
     protected abstract double getBreedingProbability();
     
+    /**
+     * An abstract method to allow the call of the getMaxLitterSize() method from any subclasses
+     * @return The max litter size of the animal
+     */
     protected abstract int getMaxLitterSize();
 
+    /**
+     * An abstract method to allow the call of the getBreedingAge() method from any subclasses
+     * @return The breeding age of the animal
+     */
     protected abstract int getBreedingAge();
 
     /**

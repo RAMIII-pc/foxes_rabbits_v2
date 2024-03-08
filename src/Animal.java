@@ -1,6 +1,7 @@
 package foxes_rabbits_v2;
 
 import java.util.List;
+import java.util.Random;
 import java.util.random;
 
 /**
@@ -19,7 +20,9 @@ public abstract class Animal
     private Location location;
     // The animal's age.
     private int age;
-    
+    // A shared random number generator to control breeding.
+    private static final Random rand = Randomizer.getRandom();
+
     /**
      * Create a new animal at location in field.
      * 
@@ -100,6 +103,8 @@ public abstract class Animal
     protected abstract double getBreedingProbability();
     
     protected abstract int getMaxLitterSize();
+
+    protected abstract int getBreedingAge();
 
     /**
      * Return the animal's age.

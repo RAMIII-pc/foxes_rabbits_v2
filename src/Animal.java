@@ -172,4 +172,11 @@ public abstract class Animal
         }
         return births;
     }
+
+    /**
+     * Check whether or not this animal is to give birth at this step.
+     * New births will be made into free adjacent locations.
+     * @param newAnimals A list to return newly born animals.
+     */
+    protected abstract void giveBirth(List<Animal> newAnimals);
 }

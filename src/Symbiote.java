@@ -34,6 +34,64 @@ public class Symbiote extends Animal{
         return MAX_LITTER_SIZE;
     }
 
-    
+    private Location findHost(){
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()){
+            Location where = it.next();
+            Object animal = field.getObjectAt(where);
+            
+            if(animal instanceof Rabbit){
+                Rabbit rabbit = (Rabbit) animal;
+                if(rabbit.isAlive()){
+                    rabbit.setDead();
+                    giveBirth(List<Animal> newSymbiotes);
+                    return where;
+                }
+            }
+
+            if(animal instanceof Fox){
+                Fox fox = (Fox) animal;
+                if(fox.isAlive()){
+                    fox.setDead();
+                    giveBirth(List<Animal> newSymbiotes);
+                    return where;
+                }
+            }
+
+            if(animal instanceof Symbiote){
+                Symbiote symbiote = (Symbiote) animal;
+                if(symbiote.isAlive()){
+                    if(symbiote.getAge() > animal.getAge()){
+                        symbiote.setDead();
+                        return where;
+                    } else {
+                        animal.setDead();
+                        return where;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public void act(List<Animal> newSymbiotes){
+        incrementAge();
+        if(isAlive()){
+            Location newLocation = findHost();
+
+            if(newLocation == null){
+                newLocation = getField().freeAdjacentLocation(getLocation());
+            }
+
+            if(newLocation != null){
+                setLocation(newLocation);
+            } else {
+                setDead();
+            }
+        }
+    }
 
 }

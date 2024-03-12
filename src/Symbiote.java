@@ -18,4 +18,22 @@ public class Symbiote extends Animal{
         }
     }
 
+    public int getBreedingAge(){
+        return BREEDING_AGE;
+    }
+
+    public int getMaxAge(){
+        return MAX_AGE;
+    }
+
+    public double getBreedingProbability(){
+        return BREEDING_PROBABILITY;
+    }
+
+    public getMaxLitterSize(){
+        return MAX_LITTER_SIZE;
+    }
+
+    
+
 }

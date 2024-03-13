@@ -44,18 +44,30 @@ public class Rabbit extends Animal
         }
     }
 
+    /**
+     * @return The breeding age of the rabbit.
+     */
     public int getBreedingAge(){
         return BREEDING_AGE;
     }
 
+    /**
+     * @return The age the rabbit can live to.
+     */
     public int getMaxAge(){
         return MAX_AGE;
     }
 
+    /**
+     * @return The likelihood the rabbit will successfully breed.
+     */
     public double getBreedingProbability(){
         return BREEDING_PROBABILITY;
     }
 
+    /**
+     * @return The maximum number of rabbits that can be birthed.
+     */
     public int getMaxLitterSize(){
         return MAX_LITTER_SIZE;
     }

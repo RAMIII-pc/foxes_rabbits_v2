@@ -24,7 +24,7 @@ public class Simulator
     private static final double FOX_CREATION_PROBABILITY = 0.02;
     // The probability that a rabbit will be created in any given grid position.
     private static final double RABBIT_CREATION_PROBABILITY = 0.08; 
-    
+    // The probability that a symbiote will be created in any given grid position.
     private static final double SYMBIOTE_CREATION_PROBABILITY = .001;
 
     // List of animals in the field.
@@ -132,7 +132,7 @@ public class Simulator
     }
     
     /**
-     * Randomly populate the field with foxes and rabbits.
+     * Randomly populate the field with foxes, rabbits, and symbiotes.
      */
     private void populate()
     {

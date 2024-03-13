@@ -1,4 +1,4 @@
-package foxes_rabbits_v2;
+
 
 /**
  * Represent a location in a rectangular grid.

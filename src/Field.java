@@ -1,4 +1,4 @@
-package foxes_rabbits_v2;
+
 
 import java.util.Collections;
 import java.util.Iterator;

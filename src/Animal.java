@@ -1,8 +1,7 @@
-package foxes_rabbits_v2;
+
 
 import java.util.List;
 import java.util.Random;
-import java.util.random;
 
 /**
  * A class representing shared characteristics of animals.

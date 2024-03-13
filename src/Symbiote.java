@@ -30,11 +30,11 @@ public class Symbiote extends Animal{
         return BREEDING_PROBABILITY;
     }
 
-    public getMaxLitterSize(){
+    public int getMaxLitterSize(){
         return MAX_LITTER_SIZE;
     }
 
-    private Location findHost(){
+    private Location findHost(List<Animal> newSymbiotes){
         Field field = getField();
         List<Location> adjacent = field.adjacentLocations(getLocation());
         Iterator<Location> it = adjacent.iterator();
@@ -46,7 +46,7 @@ public class Symbiote extends Animal{
                 Rabbit rabbit = (Rabbit) animal;
                 if(rabbit.isAlive()){
                     rabbit.setDead();
-                    giveBirth(List<Animal> newSymbiotes);
+                    giveBirth(newSymbiotes);
                     return where;
                 }
             }
@@ -55,21 +55,8 @@ public class Symbiote extends Animal{
                 Fox fox = (Fox) animal;
                 if(fox.isAlive()){
                     fox.setDead();
-                    giveBirth(List<Animal> newSymbiotes);
+                    giveBirth(newSymbiotes);
                     return where;
-                }
-            }
-
-            if(animal instanceof Symbiote){
-                Symbiote symbiote = (Symbiote) animal;
-                if(symbiote.isAlive()){
-                    if(symbiote.getAge() > animal.getAge()){
-                        symbiote.setDead();
-                        return where;
-                    } else {
-                        animal.setDead();
-                        return where;
-                    }
                 }
             }
         }
@@ -80,7 +67,7 @@ public class Symbiote extends Animal{
     public void act(List<Animal> newSymbiotes){
         incrementAge();
         if(isAlive()){
-            Location newLocation = findHost();
+            Location newLocation = findHost(newSymbiotes);
 
             if(newLocation == null){
                 newLocation = getField().freeAdjacentLocation(getLocation());
@@ -91,6 +78,17 @@ public class Symbiote extends Animal{
             } else {
                 setDead();
             }
+        }
+    }
+
+    public void giveBirth(List<Animal> newSymbiotes){
+        Field field = getField();
+        List<Location> free = field.getFreeAdjacentLocations(getLocation());
+        int births = breed();
+        for(int b = 0; b < births && free.size() > 0; b++) {
+            Location loc = free.remove(0);
+            Symbiote young = new Symbiote(false, field, loc);
+            newSymbiotes.add(young);
         }
     }
 

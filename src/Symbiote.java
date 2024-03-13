@@ -6,9 +6,9 @@ import java.util.Random;
 
 public class Symbiote extends Animal{
 
-    private static final int    BREEDING_AGE         = 45;
-    private static final int    MAX_AGE              = 50;
-    private static final double BREEDING_PROBABILITY = .0000001;
+    private static final int    BREEDING_AGE         = 250;
+    private static final int    MAX_AGE              = 300;
+    private static final double BREEDING_PROBABILITY = .3;
     private static final int    MAX_LITTER_SIZE      = 1;
     private static final Random rand                 = Randomizer.getRandom();
 

@@ -150,13 +150,11 @@ public class Simulator
                     Rabbit rabbit = new Rabbit(true, field, location);
                     animals.add(rabbit);
                 }
-                /* 
                 else if(rand.nextDouble() <= SYMBIOTE_CREATION_PROBABILITY){
                     Location location = new Location(row, col);
                     Symbiote symbiote = new Symbiote(true, field, location);
                     animals.add(symbiote);
                 }
-                */
                 // else leave the location empty.
             }
         }

@@ -2,6 +2,13 @@
 
 import java.util.Scanner;
 
+/**
+ * Drives the simulation; contains the main method
+ * to play the simulation out.
+ * 
+ * @author David J. Barnes and Michael KÃ¶lling
+ * @version Java
+ */
 public class Driver {
 
 	public static void main(String[] args) {
@@ -15,6 +22,13 @@ public class Driver {
 		} while (choice != 'X');
 	}
 	
+	/**
+	 * Prompts the user with a set of selections to allow
+	 * them to choose how they want to interact with the simulation.
+	 * 
+	 * @param sc Scanner object to accept input.
+	 * @return character of selection choice.
+	 */
 	private static char getOption(Scanner sc) {
 		System.out.println("Enter a menu option");
 		System.out.println(" R. Reset the simulation");
@@ -29,6 +43,14 @@ public class Driver {
 		return sc.next().toUpperCase().charAt(0);
 	}
 
+	/**
+	 * Based on the user's input, the selection's action
+	 * will act and play the simulation.
+	 * 
+	 * @param choice The choice the user has made to interact with the
+	 * 				 simulation.
+	 * @param mySim The simulation.
+	 */
 	private static void takeAction(char choice, Simulator mySim) {
 		switch (choice) {
 		case ('R'): 

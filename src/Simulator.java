@@ -58,6 +58,7 @@ public class Simulator
             width = DEFAULT_WIDTH;
         }
         
+        //Instance variables
         animals = new ArrayList<Animal>();
         field = new Field(depth, width);
 

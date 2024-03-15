@@ -2,6 +2,15 @@ import java.awt.Color;
 import java.util.Random;
 import java.util.List;
 
+
+/**
+ * An interface used to populate a simulation. This behavior builds the
+ * simulation, by adding animals and assigning them colors.
+ * 
+ * @author Michael Varrella
+ * @author Robert Morgan
+ * @version Java
+ */
 public interface Populate {
 
     // The probability that a fox will be created in any given grid position.
@@ -11,12 +20,23 @@ public interface Populate {
     // The probability that a symbiote will be created in any given grid position.
     static final double SYMBIOTE_CREATION_PROBABILITY = .001;
 
+    /**
+     * Assign colors to each of the animals in the simulation.
+     * 
+     * @param view The object used to show the simulation.
+     */
     public static void assignColors(SimulatorView view){
         view.setColor(Rabbit.class, Color.orange);
         view.setColor(Fox.class, Color.blue);
         view.setColor(Symbiote.class, Color.black);
     }
 
+    /**
+     * Randomly populate the field with foxes, rabbits, and symbiotes.
+     * 
+     * @param field The field used in the simulation.
+     * @param animals The list of animals used in the simulation.
+     */
     public static void populate(Field field, List<Animal> animals)
     {
         Random rand = Randomizer.getRandom();

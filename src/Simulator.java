@@ -21,11 +21,11 @@ public class Simulator implements Populate
     // The default depth of the grid.
     private static final int DEFAULT_DEPTH = 80;
     // The probability that a fox will be created in any given grid position.
-    private static final double FOX_CREATION_PROBABILITY = 0.02;
+    //private static final double FOX_CREATION_PROBABILITY = 0.02;
     // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.08; 
+    //private static final double RABBIT_CREATION_PROBABILITY = 0.08; 
     // The probability that a symbiote will be created in any given grid position.
-    private static final double SYMBIOTE_CREATION_PROBABILITY = .001;
+    //private static final double SYMBIOTE_CREATION_PROBABILITY = .001;
 
     // List of animals in the field.
     private List<Animal> animals;
@@ -64,10 +64,8 @@ public class Simulator implements Populate
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.orange);
-        view.setColor(Fox.class, Color.blue);
-        view.setColor(Symbiote.class, Color.black);
-        
+        Populate.assignColors(view);
+      
         // Setup a valid starting point.
         reset();
     }
@@ -126,38 +124,9 @@ public class Simulator implements Populate
     {
         step = 0;
         animals.clear();
-        populate();
+        Populate.populate(field, animals);
         
         // Show the starting state in the view.
         view.showStatus(step, field);
-    }
-    
-    /**
-     * Randomly populate the field with foxes, rabbits, and symbiotes.
-     */
-    private void populate()
-    {
-        Random rand = Randomizer.getRandom();
-        field.clear();
-        for(int row = 0; row < field.getDepth(); row++) {
-            for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Fox fox = new Fox(true, field, location);
-                    animals.add(fox);
-                }
-                else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Rabbit rabbit = new Rabbit(true, field, location);
-                    animals.add(rabbit);
-                }
-                else if(rand.nextDouble() <= SYMBIOTE_CREATION_PROBABILITY){
-                    Location location = new Location(row, col);
-                    Symbiote symbiote = new Symbiote(true, field, location);
-                    animals.add(symbiote);
-                }
-                // else leave the location empty.
-            }
-        }
     }
 }

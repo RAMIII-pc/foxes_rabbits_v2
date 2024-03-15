@@ -13,7 +13,7 @@ import java.awt.Color;
  * @author David J. Barnes and Michael KÃ¶lling
  * @version 2011.07.31
  */
-public class Simulator
+public class Simulator implements Populate
 {
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
